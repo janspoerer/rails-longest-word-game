@@ -1,0 +1,19 @@
+<h1>New game</h1>
+
+<div class="d-inline-flex p-2">
+  <div class="d-flex flex-row">
+    <% @letters.each do |letter| %>
+      <div class="p-2"><%=letter%></div>
+    <% end %>
+  </div>
+</div>
+
+<form action="/score" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :random_word, @letters %>
+  <div class="form-group">
+    <label for="input_word">Word</label>
+    <input type="text" class="form-control" id="input_word" name="input_word">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
